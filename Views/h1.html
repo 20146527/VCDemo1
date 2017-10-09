@@ -1,0 +1,25 @@
+<form name="login" ng-submit="angCtrl.loginForm()" class="form-horizontal" method="POST">
+    <md-input-container class="md-block">
+        <label>Email</label>
+        <md-icon md-svg-src="../img/icons/email.svg" class="email"></md-icon>
+        <input required type="email" name="clientEmail" ng-model="angCtrl.inputData.email"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+        <div ng-messages="projectForm.clientEmail.$error" role="alert">
+            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                Email có độ dài từ 10 đến 100 ký tự và đúng định dạng email.
+            </div>
+        </div>
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+        <label>Mật Khẩu</label>
+        <md-icon md-svg-src="../img/icons/key.svg"></md-icon>
+        <input ng-model="angCtrl.inputData.password" type="password">
+    </md-input-container>
+    <md-button type="submit" class="md-raised">Đăng nhập</md-button>
+    <div class="alert alert-danger" ng-show="errorMsg">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            ×</button>
+        <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
+    </div>
+</form>

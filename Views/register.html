@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Đăng ký</title>
+    <script src="../JS/angular.min.js"></script>
+    <link rel="stylesheet" href="../Css/css.css">
+
+<body ng-app="AngularJSRegister" ng-controller="AngularRegisterController as angCtrl" ng-cloak class="signinMain">
+<md-content layout-padding>
+    <div layout="row" layout-wrap >
+        <div flex="35">
+        </div>
+        <div flex="30" >
+            <form name="register" ng-submit="angCtrl.registerForm()" class="form-horizontal" method="POST">
+                <md-input-container md-no-float class="md-block">
+                    <label>Username</label>
+                    <md-icon md-svg-src="../img/icons/avatar.svg"></md-icon>
+                    <input ng-model="angCtrl.inputData.username" type="text">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <md-icon md-svg-src="../img/icons/email.svg" class="email"></md-icon>
+                    <input required type="email" name="clientEmail" ng-model="angCtrl.inputData.email"
+                           minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                            Email có độ dài từ 10 đến 100 ký tự và đúng định dạng email.
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float class="md-block">
+                    <label>Mật Khẩu</label>
+                    <md-icon md-svg-src="../img/icons/key.svg"></md-icon>
+                    <input ng-model="angCtrl.inputData.password" type="password">
+                </md-input-container>
+                <md-button type="submit" class="md-raised">Đăng ký</md-button>
+                <div class="alert alert-danger" ng-show="errorMsg">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        ×</button>
+                    <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
+                </div>
+            </form>
+
+        </div>
+        <div flex="35">
+        </div>
+    </div>
+
+
+</md-content>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+<script src="../Controllers/RegisterController.js"></script>
+<!-- Your application bootstrap  -->
+
+</body>
+</html>

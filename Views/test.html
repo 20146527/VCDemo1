@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Title</title>
+    <script src="../JS/angular.min.js"></script>
+    <script src="../Controllers/app.js"></script>
+
+<body ng-app="listDemo"  ng-cloak>
+<md-content layout-padding>
+    <div>
+        <md-button ng-click="dynamicTheme = 'default'">Default</md-button>
+        <md-button ng-click="dynamicTheme = 'altTheme'">altTheme</md-button>
+        <div md-theme="{{ dynamicTheme }}" md-theme-watch>
+            <md-button class="md-primary">I'm dynamic</md-button>
+        </div>
+    </div>
+</md-content>
+
+
+
+
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
+<!-- Your application bootstrap  -->
+
+</body>
+</html>

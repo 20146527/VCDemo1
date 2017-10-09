@@ -1,0 +1,231 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../Css/css.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+</head>
+<body ng-app="DashBoard" ng-controller="DashBoardController as angCtrl" ng-cloak>
+<div  layout="column" style="height:500px;">
+
+    <md-toolbar class="mobile">
+
+        <div class="md-toolbar-tools" data-ng-hide="showMobileMainHeader">
+            <md-button class="md-icon-button md-primary" aria-label="Settings"
+                       ng-click="toggleLeft()"
+                       ng-hide="isOpenLeft()">
+                <md-icon md-svg-icon="../img/icons/menu.svg"></md-icon>
+            </md-button>
+
+            <h2 flex md-truncate>Trần Nguyên Nghĩa</h2>
+
+            <div id="input_container">
+                <input id="input" type="text" ng-model="searchInput" placeholder="Tìm kiếm">
+
+            </div>
+            <span flex></span>
+
+            <md-button class="md-icon-button" aria-label="Refesh">
+                <md-icon class="md-default-theme" class="material-icons">&#xE5D5;</md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="View">
+                <md-icon class="md-default-theme" class="material-icons">&#xE8EF;</md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon class="md-default-theme" class="material-icons">&#xE5C3;</md-icon>
+            </md-button>
+
+        </div>
+    </md-toolbar>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                    md-component-id="left">
+            <md-toolbar layout="row">
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span>Menu</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="Close Side Panel" ng-click="close()">
+                        <md-tooltip>Close Side Panel</md-tooltip>
+                        <md-icon class="md-default-theme" class="material-icons">&#xE5CD;</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding="">
+                <md-list>
+
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE90F;</md-icon>
+                        <p>Ghi chú</p>
+                        <div class="md-secondary">2</div>
+                    </md-list-item >
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE855;</md-icon>
+                        <p>Lời nhắc</p>
+                        <md-icon class="md-secondary">2</md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE145;</md-icon>
+                        <p>Tạo nhãn mới</p>
+                        <md-icon class="md-secondary">2</md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE161;</md-icon>
+                        <p>Lưu trữ</p>
+                        <div class="md-secondary">2</div>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE872;</md-icon>
+                        <p>Thùng rác</p>
+                        <div class="md-secondary">20+</div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE8B8;</md-icon>
+                        <p>Cài đặt</p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE8AF;</md-icon>
+                        <p>Gửi phản hồi</p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE887;</md-icon>
+                        <p>Trợ giúp</p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE5DB;</md-icon>
+                        <p>Tải xuống ứng dụng</p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="md-default-theme" class="material-icons">&#xE312;</md-icon>
+                        <p>Phím tắt</p>
+                    </md-list-item>
+
+
+
+                </md-list>
+            </md-content>
+        </md-sidenav>
+
+    <div layout="row" layout-wrap>
+        <div flex="35" ng-click="closeAddNote()">
+
+        </div>
+        <div flex="30" >
+            <form layout layout-align="center" layout-padding>
+                <div class="add" layout="row" flex  ng-show="addMainShow">
+
+                        <input class="inputAdd" type="password" placeholder="Tạo ghi chú" ng-click="addNewNote()">
+
+                    <div>
+                        <md-button class="md-icon-button">
+                            <md-tooltip>Danh sách mới</md-tooltip>
+                            <md-icon class="md-default-theme" class="material-icons">&#xE896;</md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button">
+                            <md-tooltip>Ghi chú mới với hình ảnh</md-tooltip>
+                            <md-icon class="md-default-theme" class="material-icons">&#xE251;</md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button">
+                            <md-tooltip>Ghi chú mới với bản vẽ</md-tooltip>
+                            <md-icon class="md-default-theme" class="material-icons">&#xE254;</md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </form>
+            <div ng-show="addNewNoteShow">
+                <div ng-include src="'partials/addNote.html'"></div>
+            </div>
+
+        </div>
+        <div flex="35" ng-click="closeAddNote()">
+        </div>
+
+        <div flex="20">
+            <md-list>
+                <md-list-item ng-click="widget1()">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90F;</md-icon>
+                    <p>Widgets 1</p>
+                </md-list-item >
+                <md-list-item ng-click="widget2()">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90A;</md-icon>
+                    <p>Widgets 2</p>
+                </md-list-item >
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90C;</md-icon>
+                    <p>Widgets 3</p>
+                </md-list-item >
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90D;</md-icon>
+                    <p>Widgets 4</p>
+                </md-list-item >
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90E;</md-icon>
+                    <p>Widgets 5</p>
+                </md-list-item >
+            </md-list>
+            <md-progress-circular md-mode="indeterminate" ng-show="progress"></md-progress-circular>
+
+        </div>
+        <div flex="80">
+            <div layout="row" layout-wrap>
+                <div flex="20">
+                    <div ng-show="true">
+                        <div ng-include src="'partials/tile.html'"></div>
+                    </div>
+                </div>
+                <div flex="20">
+                    <div ng-show="true">
+                        <div ng-include src="'partials/tile2.html'"></div>
+                    </div>
+                </div>
+                <div flex="20">
+                        <label>
+                            <input type="checkbox" ng-model="isSpecial">
+                            <span class="fa fa-check"></span>Special
+                        </label>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="../JS/angular.js"></script>
+<script src="../JS/angular-animate.js"></script>
+<script src="../JS/angular-aria.js"></script>
+<script src="../JS/angular-messages.js"></script>
+
+
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+<!-- Your application bootstrap  -->
+<script src="test.js"></script>
+
+</body>
+</html>

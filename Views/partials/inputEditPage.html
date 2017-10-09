@@ -1,0 +1,30 @@
+<md-input-container class="md-block">
+    <label>Title</label>
+    <input data-ng-model="data.title" type="text" >
+</md-input-container>
+<md-checkbox type="checkbox" data-ng-model="data.checkbox" ng-disabled="checked" aria-label="Checkbox" >
+    Checkbox
+</md-checkbox>
+<div ng-if="data.checkbox == 'true'">
+    <p>True</p>
+</div>
+<div ng-if="data.checkbox == 'false'">
+    <p>False</p>
+</div>
+<BR>
+
+<md-input-container class="md-block">
+    <label>Select</label>
+    <md-select data-ng-model="data.select" type="text" ng-select="2" >
+        <md-option><em>None</em></md-option>
+        <md-option value="water">Water</md-option>
+        <md-option value="juice">Juice</md-option>
+        <md-option value="milk">Milk</md-option>
+        <md-option value="wine">Wine</md-option>
+        <md-option value="mead">Mead</md-option>
+    </md-select>
+</md-input-container>
+<div class="alert alert-info" ng-show="alertMsg">
+    <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{alertMsg}}
+</div>
+

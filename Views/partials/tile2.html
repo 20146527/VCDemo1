@@ -1,0 +1,31 @@
+<h4>Widget2</h4>
+<form name="save" ng-submit="angCtrl.saveForm2()" class="form-horizontal" method="POST">
+    <label ng-repeat="data in dataload2">
+        <md-input-container class="md-block">
+            <label>Title</label>
+            <input ng-model="angCtrl.inputData.title2" type="text" ng-value="data.title">
+        </md-input-container>
+        <md-checkbox ng-model="angCtrl.inputData.checkbox2" ng-disabled="checked" aria-label="Checkbox">
+            Checkbox: {{ angCtrl.inputData.checkbox2 }}
+        </md-checkbox>
+        <BR>
+        <md-input-container class="md-block">
+            <label>Select</label>
+            <md-select ng-model="angCtrl.inputData.select2" type="text">
+                <md-option><em>None</em></md-option>
+                <md-option value="water">Water</md-option>
+                <md-option value="juice">Juice</md-option>
+                <md-option value="milk">Milk</md-option>
+                <md-option value="wine">Wine</md-option>
+                <md-option value="mead">Mead</md-option>
+            </md-select>
+        </md-input-container>
+        <div layout="row" layout-align="end center">
+            <md-button type="submit" class="md-raised">Save</md-button>
+        </div>
+        <div class="alert alert-danger" ng-show="alertMsg2">
+            <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{alertMsg}}
+        </div>
+    </label>
+
+</form>

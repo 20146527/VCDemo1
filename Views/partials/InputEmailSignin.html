@@ -1,0 +1,28 @@
+<md-progress-linear md-mode="indeterminate" ng-show="progressEmail"></md-progress-linear>
+<h1>Đăng nhập</h1>
+<h5>Sử dụng tài khoản MoonHub của bạn</h5>
+<hr>
+<form name="login" ng-submit="angCtrl.checkEmail()" class="form-horizontal" method="POST">
+    <md-input-container class="md-block">
+        <label>Email</label>
+        <md-icon md-svg-src="../img/icons/email.svg" class="email"></md-icon>
+        <input required type="email" name="clientEmail" ng-model="angCtrl.inputData.email"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+        <div ng-messages="projectForm.clientEmail.$error" role="alert">
+            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                Email có độ dài từ 10 đến 100 ký tự và đúng định dạng email.
+            </div>
+        </div>
+    </md-input-container>
+    <a href="#">Bạn quên địa chỉ Email?</a><br>
+    <a href="register.html">Tạo tài khoản</a>
+    <div layout="row" layout-align="end center">
+        <md-button type="submit" class="md-raised">Đăng nhập</md-button>
+    </div>
+    <div class="alert alert-danger" ng-show="errorMsg">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            ×</button>
+        <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
+    </div>
+</form>

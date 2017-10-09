@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="../Css/css.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+</head>
+<body data-ng-app="EditPage" data-ng-controller="EditPageController as angCtrl" ng-cloak>
+<div  layout="column" style="height:500px;">
+
+    <md-toolbar class="mobile">
+
+        <div class="md-toolbar-tools" data-ng-hide="showMobileMainHeader">
+            <md-button class="md-icon-button md-primary" aria-label="Settings"
+                       ng-click="toggleLeft()"
+                       ng-hide="isOpenLeft()">
+                <md-icon md-svg-icon="../img/icons/menu.svg"></md-icon>
+            </md-button>
+
+            <h2 flex md-truncate>Trần Nguyên Nghĩa</h2>
+
+            <div id="input_container">
+                <input id="input" type="text" ng-model="searchInput" placeholder="Tìm kiếm">
+
+            </div>
+            <span flex></span>
+
+            <md-button class="md-icon-button" aria-label="Refesh">
+                <md-icon class="md-default-theme" class="material-icons">&#xE5D5;</md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="View">
+                <md-icon class="md-default-theme" class="material-icons">&#xE8EF;</md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon class="md-default-theme" class="material-icons">&#xE5C3;</md-icon>
+            </md-button>
+
+        </div>
+    </md-toolbar>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left">
+        <md-toolbar layout="row">
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span>Menu</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Close Side Panel" ng-click="close()">
+                    <md-tooltip>Close Side Panel</md-tooltip>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE5CD;</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding="">
+            <md-list>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE90F;</md-icon>
+                    <p>Ghi chú</p>
+                    <div class="md-secondary">2</div>
+                </md-list-item >
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE855;</md-icon>
+                    <p>Lời nhắc</p>
+                    <md-icon class="md-secondary">2</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE145;</md-icon>
+                    <p>Tạo nhãn mới</p>
+                    <md-icon class="md-secondary">2</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE161;</md-icon>
+                    <p>Lưu trữ</p>
+                    <div class="md-secondary">2</div>
+                </md-list-item>
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE872;</md-icon>
+                    <p>Thùng rác</p>
+                    <div class="md-secondary">20+</div>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE8B8;</md-icon>
+                    <p>Cài đặt</p>
+                </md-list-item>
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE8AF;</md-icon>
+                    <p>Gửi phản hồi</p>
+                </md-list-item>
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE887;</md-icon>
+                    <p>Trợ giúp</p>
+                </md-list-item>
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE5DB;</md-icon>
+                    <p>Tải xuống ứng dụng</p>
+                </md-list-item>
+                <md-list-item ng-click="null">
+                    <md-icon class="md-default-theme" class="material-icons">&#xE312;</md-icon>
+                    <p>Phím tắt</p>
+                </md-list-item>
+
+
+
+            </md-list>
+        </md-content>
+    </md-sidenav>
+
+    <div layout="row" layout-wrap>
+        <div flex="50">
+            <div ng-show="select1" >
+                <div class="select">
+                    <form name="save" ng-submit="angCtrl.selecta1()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input1">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload1">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel1()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div flex="50">
+            <div ng-show="select2">
+                <div class="select">
+                    <form name="save2" ng-submit="angCtrl.selecta2()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input2">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload2">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel2()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div flex="50">
+            <div ng-show="select3">
+                <div class="select">
+                    <form name="save3" ng-submit="angCtrl.selecta3()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input3">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload3">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel3()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div flex="50">
+            <div ng-show="select4">
+                <div class="select">
+                    <form name="save4" ng-submit="angCtrl.selecta4()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input4">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload4">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel4()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div flex="50">
+            <div ng-show="select5">
+                <div class="select">
+                    <form name="save5" ng-submit="angCtrl.selecta5()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input5">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload5">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel5()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div flex="50">
+            <div ng-show="select6">
+                <div class="select">
+                    <form name="save6" ng-submit="angCtrl.selecta6()" class="form-horizontal" method="POST">
+                        <div ng-include src="'partials/selectEditPage.html'"></div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="input6">
+                <div class="select">
+                    <label data-ng-repeat="data in dataload6">
+                        <div ng-include src="'partials/inputEditPage.html'"></div>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="cancel6()" class="md-raised">Cancel</md-button>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div flex="100">
+            <div layout="row" layout-align="center center">
+                <md-progress-circular md-mode="indeterminate" ng-show="progress"></md-progress-circular>
+                <md-button data-ng-click="saveAll()" class="md-raised">Save All</md-button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="../JS/angular.js"></script>
+<script src="../JS/angular-animate.js"></script>
+<script src="../JS/angular-aria.js"></script>
+<script src="../JS/angular-messages.js"></script>
+
+<script src="../Controllers/EditPageController.js"></script>
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+<!-- Your application bootstrap  -->
+
+
+</body>
+</html>
